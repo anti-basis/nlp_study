@@ -6,10 +6,7 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.model_selection import train_test_split
 
 # 1. 加载数据集
-# 注意：确保 dataset.csv 和你的 python 文件在同一个文件夹
 dataset = pd.read_csv("dataset.csv", sep="\t", header=None)
-# 为了演示方便和运行速度，如果你电脑配置一般，可以只取前 5000 行
-# dataset = dataset.sample(5000) 
 
 # 2. 中文分词处理
 # 机器学习模型不认识中文句子，需要用 jieba 切词，并用空格连接
@@ -26,7 +23,7 @@ vectorizer = CountVectorizer()
 X = vectorizer.fit_transform(input_sentences) # 将文本转为数字矩阵
 y = labels
 
-# 4. 划分训练集和测试集 (为了验证模型好坏)
+# 4. 划分训练集和测试集
 train_x, test_x, train_y, test_y = train_test_split(X, y, test_size=0.2, random_state=42)
 
 # ==========================================
